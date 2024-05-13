@@ -4,7 +4,7 @@ import asyncio
 from telethon.sync import TelegramClient, events, functions
 from telethon.sessions import StringSession
 from datetime import datetime
-from Config import ACC_STRMAIN, API_ID, API_HASH
+from Config import ACC_STR, API_ID, API_HASH
 from telethon.tl.functions.messages import SendReactionRequest, SetTypingRequest
 from telethon.tl.types import SendMessageGamePlayAction
 from telethon.errors import ChatAdminRequiredError, PeerIdInvalidError, UserDeletedError
@@ -159,7 +159,7 @@ async def initialize_account_id(client):
 ###################################################
 
 async def start_userbot():
-    async with TelegramClient(StringSession(ACC_STRMAIN), API_ID, API_HASH) as client:
+    async with TelegramClient(StringSession(ACC_STR), API_ID, API_HASH) as client:
         print("Userbot has started.")
         await initialize_account_id(client)
 
