@@ -42,6 +42,7 @@ def remove_unwanted_text(text):
     text = re.sub(r'RIYA\n\n', '', text)
     text = re.sub(r'💫💫🥰 BIG DADDY🥰💫💫\n\s*✈️\s*1 MINUTES\s*✈️\n\s*==========🤩========', '', text)
     text = re.sub(r'Rajeev\n\n', '', text)
+    text = re.sub(r'KNIGHT\n\n', '', text)
     text = re.sub(r'WIN', 'WIN ✅', text)
     return text.strip()
 

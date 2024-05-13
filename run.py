@@ -1,6 +1,6 @@
 import subprocess
 
-scripts = ['bdgc1.py', 'bdgc2.py', 'bdgc3.py', 'bdgbot.py', 'user.py']
+scripts = ['bdgc1.py', 'bdgc2.py', 'bdgc3.py', 'bdgbot.py']
 
 processes = []
 for script in scripts:
