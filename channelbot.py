@@ -3,12 +3,11 @@ import time
 from telethon.sync import TelegramClient
 from telethon.sessions import StringSession
 
-# Define headers and initial data for the requests
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'en-US,en;q=0.9',
     'ar-real-ip': '49.43.3.84',
-    'authorization': '',  # You may need to include a valid token here
+    'authorization': '', 
     'cache-control': 'no-cache',
     'content-type': 'application/json;charset=UTF-8',
     'origin': 'https://bdggame.club',
@@ -48,17 +47,15 @@ allowed_users = ['thakurmukesh99', 'gonnathink', 'itsmerood']
 
 last_issue_number = None
 
-# Telegram bot setup with string session
-api_id = "22157690"  # Replace with your actual api_id from Telegram
-api_hash = "819a20b5347be3a190163fff29d59d81"  # Replace with your actual api_hash from Telegram
-string_session = "1BVtsOKcBu3eAzs33mTnTaQ01gqZYoU8wVHyBZSVF_Aa5iBq14yrE_5ssRZOqHODafKRE5OgRBxEeOZI1KQD0ZgC0GVwxROlO2lb4T0FAxUjahwAR0XUx03z_WBb4ftgaJ4YYfB5Mb74DyvAZjPC_XSddemUaHeWvieU0sKkegfvrhJ5UnqsSOPvbCT2pBuc8IzgG0NGwWeo73fHYkI0Q-WWLAE_yAN6XJ9JS2CILG9AU2j53JFAHn3MrDY_7zemxJXGp_Kf4xyn7s8VntgLeBqf5iJHKDdZx_9Bmlall2EEwpfvvPzOrCdxgbjA2-LZjV1kN2sxEa4DQWKWKtenqUerZeR3dYWk="  # Your string session
+api_id = "22157690" 
+api_hash = "819a20b5347be3a190163fff29d59d81"  
+string_session = "1BVtsOKcBu3eAzs33mTnTaQ01gqZYoU8wVHyBZSVF_Aa5iBq14yrE_5ssRZOqHODafKRE5OgRBxEeOZI1KQD0ZgC0GVwxROlO2lb4T0FAxUjahwAR0XUx03z_WBb4ftgaJ4YYfB5Mb74DyvAZjPC_XSddemUaHeWvieU0sKkegfvrhJ5UnqsSOPvbCT2pBuc8IzgG0NGwWeo73fHYkI0Q-WWLAE_yAN6XJ9JS2CILG9AU2j53JFAHn3MrDY_7zemxJXGp_Kf4xyn7s8VntgLeBqf5iJHKDdZx_9Bmlall2EEwpfvvPzOrCdxgbjA2-LZjV1kN2sxEa4DQWKWKtenqUerZeR3dYWk="
 bot = TelegramClient(StringSession(string_session), api_id, api_hash)
 
 with requests.Session() as s, bot:
     login_url = 'https://api.bigdaddygame.cc/api/webapi/Login'
     response = s.post(login_url, headers=headers, json=login_data)
 
-    # Check login success and send welcome message
     if response.json().get('code') == 0:
         print("Login successful.")
         for user in allowed_users:
@@ -80,15 +77,15 @@ with requests.Session() as s, bot:
                         print(f"{entry['issueNumber']:<20} {entry['number']:<10} {entry['colour']:<10} {entry['premium']:<10}")
                     
                     numbers = [int(trade['number']) for trade in latest_trades]
-                    if (numbers[0] == 0 and numbers[1] == 2) or (numbers[0] == 2 and numbers[1] == 0):
+                    if (numbers[0] == 0 and numbers[1] == 2) or (numbers[0] == 0 and numbers[1] == 4):
                         print("Take trade")
-                        message = f"Trade Alert: {int(last_issue_number) + 1} "# Send message via Telegram to allowed users only
+                        message = f"Trade Alert: {int(last_issue_number) + 1} "
                         for user in allowed_users:
                             bot.send_message(user, message)
             else:
                 print("Failed to retrieve data or no new data.")
 
-            time.sleep(0.1)  # Wait for 1 second before making another request
+            time.sleep(0.1)
     else:
         print("Login failed. Error:", response.json().get('msg'))
         
