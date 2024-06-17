@@ -43,7 +43,7 @@ post_data2 = {
     'timestamp': 1715321661,
 }
 
-allowed_users = ['thakurmukesh99', 'gonnathink', 'itsmerood']
+allowed_users = ['thakurmukesh99', 'itsmerood']
 
 last_issue_number = None
 
